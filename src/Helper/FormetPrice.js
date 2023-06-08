@@ -1,8 +1,8 @@
 const FormetPrice = ({price}) =>{
-    return Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
+    return Intl.NumberFormat('ur-PK', {
+        style: 'currency',
+        currency: 'PKR',
         maximumFractionDigits: 2,
       }).format(price / 100);
     };
-export default FormetPrice
+export default FormetPrice 

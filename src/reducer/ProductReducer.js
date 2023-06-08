@@ -25,7 +25,7 @@ const ProductReducer = (state, action) =>{
                     const featureData = action.payload.filter((curElem)=>{
                         return curElem.featured === true;
                     });
-                    console.log(`Feature data is ${featureData}`)
+                 
                     return {
                         ...state,
                         isLoading:false,
@@ -39,7 +39,23 @@ const ProductReducer = (state, action) =>{
                     isLoading:false,
                     isError:true,
                 }
-
+                case "IS_SINGLE_LOADING":
+                    return {
+                     ...state,
+                     isSingleLoading:true,
+                 }
+                 case "SET_SINGLE_PRODUCT":
+                    return {
+                     ...state,
+                     isSingleLoading:false,
+                     singleProduct: action.payload
+                 }
+                 case "SINGLE_ERROR":
+                     return{
+                         ...state,
+                         isSingleLoading:false,
+                         isError: true,
+                     }
             default:
                 return state;
         }

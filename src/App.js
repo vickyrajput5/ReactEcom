@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-
 import About from "./About";
 import Cart from "./Cart";
 import Footer from "./component/Footer";
