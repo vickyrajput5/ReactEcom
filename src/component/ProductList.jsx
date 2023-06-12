@@ -5,15 +5,15 @@ import Listview from "./Listview";
 
 
 const ProductList = () => {
-  const { filter_products, setGridView } = useFilterContext();
+  const { filter_products, grid_view } = useFilterContext();
 
-  if (setGridView) {
+  if (grid_view ===  true) {
     return <GridView products={filter_products} />;
   }
 
-//   if (grid_view === false) {
-//     return <Listview products={filter_products} />;
-//   }
+  if (grid_view === false) {
+    return <Listview products={filter_products} />;
+  }
 };
 
 export default ProductList;
