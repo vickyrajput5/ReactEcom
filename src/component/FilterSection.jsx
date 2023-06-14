@@ -1,11 +1,11 @@
 import styled from "styled-components";
-
+import FormatPrice from '../Helper/FormetPrice'
 import { FaCheck } from "react-icons/fa";
 import { useFilterContext } from "../context/FilterContext";
-
+import {Button } from '../styles/Button'
 const FilterSection = () => {
 
-  const {filters: {text, category,  color}, updateFilterValue, all_products } = useFilterContext();
+  const {filters: {text, category,  color, price, maxPrice, minPrice},clearFilters ,updateFilterValue, all_products } = useFilterContext();
 
   // to get the unique data of eacg field
 
@@ -107,6 +107,26 @@ const FilterSection = () => {
             );
           })}
         </div>
+      </div>
+      <div className="filter_price">
+        <h3>Price</h3>
+        <p>
+          <FormatPrice price={price}/>
+        </p>
+        <input
+          type="range"
+          name="price"
+          min={minPrice}
+          max={maxPrice}
+          value={price}
+          onChange={updateFilterValue}
+        />
+      </div>
+
+      <div className="filter-clear">
+        <Button className="btn" onClick={clearFilters} >
+          Clear Filters
+        </Button>
       </div>
     </Wrapper>
   );
