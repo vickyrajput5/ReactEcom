@@ -4,15 +4,18 @@ import CartAmountToggle from "./CartAmountToggle";
 import { FaTrash } from "react-icons/fa";
 import { useCartContext } from "../context/CartContext";
 
-const CartItem = ({ id, name, image, color, price, amount }) => {
-  const { removeItem } = useCartContext();
-  const setDecrease = () => {
-    // amount > 1 ? setAmount(amount - 1) : setAmount(1);
-  };
 
-  const setIncrease = () => {
-    // amount < stock ? setAmount(amount + 1) : setAmount(stock);
-  };
+const CartItem = ({ id, name, image, color, price, amount }) => {
+  
+  const { removeItem } = useCartContext;
+  // const[amount, setAmount] = useState(1);
+
+  const setDec = () =>{
+      // amount > 1 ? setAmount(amount -1 ): setAmount(1)
+  }
+  const setInc = () =>{
+      // amount < stock ? setAmount(amount + 1) : setAmount(stock);
+  }
 
   return (
     <div className="cart_heading grid grid-five-column">
@@ -42,8 +45,8 @@ const CartItem = ({ id, name, image, color, price, amount }) => {
       {/* Quantity  */}
       <CartAmountToggle
         amount={amount}
-        setDecrease={setDecrease}
-        setIncrease={setIncrease}
+        setDec={setDec}
+        setInc={setInc}
       />
 
       {/* //Subtotal */}
@@ -54,7 +57,7 @@ const CartItem = ({ id, name, image, color, price, amount }) => {
       </div>
 
       <div>
-        <FaTrash className="remove_icon" onClick={() => removeItem(id)} />
+      <FaTrash className="remove_icon" onClick={() => removeItem(id)} />
       </div>
     </div>
   );

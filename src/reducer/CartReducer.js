@@ -2,8 +2,8 @@ const CartReducer = (state, action) => {
   
   if(action.type === "ADD_TO_CART" ){
       let {id, color , amount , product} = action.payload;
-      let cartProduct;
-      cartProduct = {
+      
+      let cartProduct = {
         id: id + color,
         name: product.name,
         color,
@@ -18,7 +18,21 @@ const CartReducer = (state, action) => {
     }
   }
 
- 
+  if (action.type === "REMOVE_ITEM") {
+    let updatedCart = state.cart.filter(
+      (curItem) => curItem.id !== action.payload
+    );
+    return {
+      ...state,
+      cart: updatedCart,
+    };
+  }
+ if(action.type === "CLEAR_CART"){
+   return{
+     ...state,
+     cart:[]
+   }
+ }
     return state
 }
 
